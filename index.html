@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function</title>
+  </head>
+  <body>
+    <button type="button" onclick="sayHello()">Click</button><br><br>
+    <div> <!-- agar user bisa mengisi-->
+      <label>Fahrenheit</label>
+      <input type="number" id="f" placeholder="enter the temperatur"><br>
+      <button type="button" onclick="tocelcius()">Konversi</button><br>
+      <label>Celcius</label>
+      <h1 id="suhukonversi">0</h1>
+    
+      <label>Number 1</label><br>
+      <input type="number" id="x" placeholder="enter number 1"><br>
+      <label>Number 2</label><br>
+      <input type="number" id="y" placeholder="enter number 2"><br>
+      <button onclick="hitung('+')">+</button>
+      <button onclick="hitung('-')">-</button>
+      <button onclick="hitung('*')">x</button>
+      <button onclick="hitung('/')">:</button><br>
+      <label>Result</label><br>
+      <h1 id="hasil">0</h1>
+  </div><!--dari form jadi div agar saat tombol di pencet ngga langsung hilang-->
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      function sayHello(){
+        return alert("Hello World");
+      }
+      function tocelcius(){
+        let suhufahrenheit = document.getElementById("f").value;
+        let konversi = (5/9) * (suhufahrenheit-32);
+        return document.getElementById("suhukonversi").innerHTML=konversi.toFixed(2);
+      }
+
+      function hitung(operator){
+        let a = Number(document.getElementById("x").value);
+        let b = Number(document.getElementById("y").value);
+        let total = 0;
+        if (operator === '+') {
+              total = a + b;
+        } 
+        else if (operator === '-') {
+              total = a - b;
+        } 
+        else if (operator === '*') {
+              total = a * b;
+        } 
+        else if (operator === '/') {
+          if (b === 0) {
+            total = "Tidak bisa dibagi 0";
+          } 
+          else {
+            total = a / b;
+          }
+        }
+        return document.getElementById("hasil").innerHTML = total;
+      }
+    </script>
+  </body>
+</html>
